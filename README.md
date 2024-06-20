@@ -1,11 +1,18 @@
 | Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-S2 | ESP32-S3 |
 | ----------------- | ----- | -------- | -------- | -------- | -------- | -------- |
 
-# Wi-Fi Station Example
+# HVAC Sensor (Based on the Wi-Fi Station Example)
 
 (See the README.md file in the upper level 'examples' directory for more information about examples.)
 
-This example shows how to use the Wi-Fi Station functionality of the Wi-Fi driver of ESP for connecting to an Access Point.
+This uses the Wi-Fi Station functionality of the ESP for connecting to an Access Point and uploading
+Sensor readings via MQTT.
+There are 4 plenum chambers in an HVAC system: Intake, Supply, Extract, Exhaust.
+There are no sensors in the exhaust plenum as it simply discharges to the outside.
+The Intake and Extract plenums have air filters, the pressure on either side of the filter is monitored
+to know when the filter needs cleaning/replacing.
+Filters are monitored with a pair of BMP390 or BME280 sensors on a common I2C bus, the lower address
+is used by the upstream (higher pressure) sensor.
 
 ## How to use example
 
